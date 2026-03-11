@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VocabMaster - Học Từ Vựng Thông Minh</title>
+    <meta name="description" content="Ứng dụng học từ vựng với hệ thống lặp lại ngắt quãng (Spaced Repetition)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Top Navigation -->
+    <header class="top-nav" id="topNav">
+        <div class="nav-left">
+            <button class="sidebar-toggle" id="sidebarToggle" title="Ẩn/Hiện sidebar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="18" rx="2" />
+                    <rect x="14" y="3" width="7" height="18" rx="2" />
+                </svg>
+                <span id="sidebarToggleText">Ẩn sidebar</span>
+            </button>
+        </div>
+        <nav class="nav-center">
+            <div class="mode-tabs" id="modeTabs">
+                <button class="mode-tab active" data-mode="flashcard">
+                    <span class="tab-icon">🃏</span> Flashcard
+                </button>
+                <button class="mode-tab" data-mode="typing">
+                    <span class="tab-icon">⌨️</span> Gõ từ
+                </button>
+                <button class="mode-tab" data-mode="quiz">
+                    <span class="tab-icon">📝</span> Trắc nghiệm
+                </button>
+            </div>
+        </nav>
+        <div class="nav-right">
+            <div class="progress-badge" id="progressBadge">
+                <span class="progress-icon">⚡</span>
+                <span id="sessionProgress">0/0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- App Layout -->
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar open" id="sidebar">
+            <div class="sidebar-inner">
+                <div class="sidebar-logo">
+                    <span class="logo-icon">📚</span>
+                    <h1>VocabMaster</h1>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card stat-new">
+                        <div class="stat-number" id="statNew">0</div>
+                        <div class="stat-label">Mới</div>
+                    </div>
+                    <div class="stat-card stat-learning">
+                        <div class="stat-number" id="statLearning">0</div>
+                        <div class="stat-label">Đang học</div>
+                    </div>
+                    <div class="stat-card stat-due">
+                        <div class="stat-number" id="statDue">0</div>
+                        <div class="stat-label">Cần ôn</div>
+                    </div>
+                    <div class="stat-card stat-mastered">
+                        <div class="stat-number" id="statMastered">0</div>
+                        <div class="stat-label">Đã thuộc</div>
+                    </div>
+                </div>
+
+                <div class="progress-section">
+                    <div class="progress-header">
+                        <span>Tiến độ tổng</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+
+                <div id="groupList" class="group-list">
+                    <!-- Rendered by JS -->
+                </div>
+
+                <div class="sidebar-actions">
+                    <button class="action-btn btn-primary" id="btnStartDue" disabled>
+                        🔄 Ôn tập (<span id="dueCountBtn">0</span> từ)
+                    </button>
+                    <button class="action-btn btn-accent" id="btnStartNew">
+                        ✨ Học từ mới
+                    </button>
+                    <button class="action-btn btn-secondary" id="btnStartAll">
+                        📖 Học tất cả
+                    </button>
+                </div>
+
+                <div class="sidebar-section-title">Quản lý từ vựng</div>
+                <div class="sidebar-actions">
+                    <button class="action-btn btn-secondary" id="btnAddWord">
+                        ➕ Thêm từ mới
+                    </button>
+                    <button class="action-btn btn-secondary" id="btnImport">
+                        📥 Nhập từ CSV / JSON
+                    </button>
+                    <button class="action-btn btn-secondary" id="btnWordList">
+                        📋 Danh sách từ (<span id="totalWordCount">80</span>)
+                    </button>
+                </div>
+
+                <div class="sidebar-footer">
+                    <button class="footer-btn" id="btnSettings" title="Cài đặt API">
+                        ⚙️ API
+                    </button>
+                    <button class="footer-btn" id="btnReset" title="Reset tiến độ">
+                        🗑️ Reset
+                    </button>
+                    <button class="footer-btn" id="btnExport" title="Xuất dữ liệu">
+                        📤 Xuất
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Dynamically rendered by JS -->
+        </main>
+    </div>
+
+    <!-- Shortcut Bar -->
+    <div class="shortcut-bar" id="shortcutBar">
+        <!-- Rendered dynamically by JS -->
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
